@@ -31,5 +31,30 @@ if uploaded_file:
             else:
                 st.success(f"✅ Yield to Maturity: {ytm:.4f}%")
 
+                import numpy as np
+                import matplotlib.pyplot as plt
+
+                st.subheader("📉 Bond Price vs YTM Curve")
+
+                ytm_range = np.linspace(0.01, 0.20, 100)
+                price_list = [
+                    sum(cf / (1 + r) ** t for cf, t in zip(cash_flows, times))
+                    for r in ytm_range
+                ]
+
+                fig, ax = plt.subplots(facecolor='#0e1117')
+                ax.set_facecolor('#0e1117')
+                ax.plot(ytm_range * 100, price_list, color='cyan', linewidth=2)
+                ax.set_title("Price vs Yield to Maturity")
+                ax.set_xlabel("Yield to Maturity (%)")
+                ax.set_ylabel("Bond Price (₹)")
+                ax.grid(True, linestyle='--', alpha=0.3, color='gray')
+                ax.tick_params(colors='white')
+                ax.xaxis.label.set_color('white')
+                ax.yaxis.label.set_color('white')
+                ax.title.set_color('white')
+
+                st.pyplot(fig)
+
     except Exception as e:
         st.error(f"❌ Error: {e}")

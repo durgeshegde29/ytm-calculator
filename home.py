@@ -2,12 +2,27 @@ import streamlit as st
 
 st.set_page_config(page_title="YTM Hub", layout="wide")
 
-# Title + Subtitle
+# Background Image CSS
 st.markdown(
     """
-    <div style='text-align: center; padding: 10px;'>
-        <h1 style='font-size: 42px;'>📈 Yield to Maturity (YTM) Hub</h1>
-        <p style='font-size: 20px; color: gray;'>Your one-stop platform for accurate bond yield calculations.</p>
+    <style>
+    .stApp {
+        background-image: url("home_bg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Title + Subtitle with Overlay
+st.markdown(
+    """
+    <div style='background-color: rgba(0, 0, 0, 0.5); padding: 30px 10px; border-radius: 10px; text-align: center;'>
+        <h1 style='font-size: 42px; color: white;'>📈 Yield to Maturity (YTM) Hub</h1>
+        <p style='font-size: 20px; color: lightgray;'>Your one-stop platform for accurate bond yield calculations.</p>
     </div>
     """,
     unsafe_allow_html=True
@@ -34,19 +49,19 @@ with col1:
     st.markdown(card_style.format(
         title="📄 Time-based YTM",
         desc="Use simplified cash flows over fixed periods to estimate yield.",
-        link="/1_time_in_years"
+        link="/time_in_years"
     ), unsafe_allow_html=True)
 
 with col2:
     st.markdown(card_style.format(
         title="📅 Date-based YTM",
         desc="Upload CSVs with real bond dates for precision YTM computation.",
-        link="/2_date_based"
+        link="/date_based"
     ), unsafe_allow_html=True)
 
 with col3:
     st.markdown(card_style.format(
-        title="🔎 Bond Lookup + Estimator",
+        title="🔎 Bond Finder",
         desc="Search bonds by ISIN or issuer, and quickly estimate their return.",
-        link="/3_bond_lookup"
+        link="/bond_finder"
     ), unsafe_allow_html=True)

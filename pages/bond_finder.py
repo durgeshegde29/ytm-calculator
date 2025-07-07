@@ -2,7 +2,7 @@ from datetime import datetime
 import streamlit as st
 import re
 
-st.title("🔎 Find Bond by ISIN or Issuer Name")
+st.title("🔎 Find Bonds by ISIN or Issuer Name")
 
 # Input field
 user_input = st.text_input("Enter ISIN or Issuer Name")
